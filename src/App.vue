@@ -7,11 +7,22 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 export default {
   name: "App",
   data: () => ({
     //
   }),
+  methods: {
+    ...mapActions('Proyectos' , ['getProjects']),
+
+  },
+  computed: {
+    ...mapState('Proyectos' , ['projects'])
+  },
+  created(){
+    console.log(this.projects);
+  }
 };
 </script>
 

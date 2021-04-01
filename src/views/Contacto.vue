@@ -56,6 +56,8 @@
 import { mapState } from "vuex";
 import FlechaAtras from "@/components/FlechaAtras";
 import firebase from "firebase";
+import moment from "moment";
+
 export default {
   components: {
     FlechaAtras,
@@ -73,14 +75,18 @@ export default {
   methods: {
     async sendMessage() {
       try {
-        const message = {
-          name: this.name,
-          email: this.email,
-          message: this.message,
-          date: new Date().toDateString(),
+        const { name, email, message } = this;
+
+        const comment = {
+          name,
+          email,
+          message,
+          date: moment().format("DD/MM/yyyy hh:mm"),
         };
 
-        await firebase.firestore().collection("comentarios").add(message);
+        await firebase.firestore().collection("comentarios").add(comment);
+        this.$toast.open("Gracias por tu comentario");
+        this.$router.push("/");
       } catch (error) {
         console.log(error);
       }
@@ -95,7 +101,5 @@ export default {
   color: $main-dark;
   min-height: 100vh;
   padding-top: 52px;
-  &__formulario {
-  }
 }
 </style>

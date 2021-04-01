@@ -28,7 +28,11 @@
               ><v-icon x-large>mdi-gmail</v-icon>sseguraosorio</a
             >
           </div>
-          <v-btn  dark :color="colors.mainHighlight" width="100%" :to="{name: 'Contacto'}"
+          <v-btn
+            dark
+            :color="colors.mainHighlight"
+            width="100%"
+            :to="{ name: 'Contacto' }"
             >Déjame un mensaje</v-btn
           >
         </div>
@@ -47,17 +51,19 @@
       id="Descripcion"
     >
       <v-container>
-        <p class="text-center">
-          <v-icon class="pb-1">mdi-format-quote-open</v-icon>
-          Soy un apasionado por la cálidad final de mi trabajo , la atención a
-          los detalles y pensar en los distintos casos de uso de lo que
-          construyo es mi vocación Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Dolorum nesciunt consequatur qui possimus autem,
-          enim odit repudiandae necessitatibus facere. Consequatur
-          exercitationem adipisci aspernatur dicta temporibus quibusdam quaerat
-          reprehenderit libero at.
-          <v-icon class="pb-1">mdi-format-quote-close</v-icon>
-        </p>
+        <vue-aos animation-class="fadeIn animated">
+          <p class="text-center">
+            <v-icon class="pb-1">mdi-format-quote-open</v-icon>
+            Soy un apasionado por la cálidad final de mi trabajo , la atención a
+            los detalles y pensar en los distintos casos de uso de lo que
+            construyo es mi vocación Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Dolorum nesciunt consequatur qui possimus autem,
+            enim odit repudiandae necessitatibus facere. Consequatur
+            exercitationem adipisci aspernatur dicta temporibus quibusdam
+            quaerat reprehenderit libero at.
+            <v-icon class="pb-1">mdi-format-quote-close</v-icon>
+          </p>
+        </vue-aos>
       </v-container>
     </section>
 
@@ -189,8 +195,11 @@
 
 <script>
 import { mapState } from "vuex";
+import VueAos from "vue-aos";
+
 export default {
   name: "Home",
+  components: { VueAos },
   computed: {
     ...mapState(["colors"]),
   },
