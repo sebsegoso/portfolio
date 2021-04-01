@@ -1,14 +1,13 @@
 <template>
   <div class="contacto">
     <v-container class="mx-auto">
-        <FlechaAtras />
-        <h1>Déjame un mensaje</h1>
+      <FlechaAtras />
+      <h1>Déjame un mensaje</h1>
 
       <v-form class="contacto__formulario py-10" @submit.prevent="sendMessage">
         <v-row no-gutters>
           <v-col cols="12" md="6">
             <v-text-field
-             
               type="text"
               name="name"
               v-model="name"
@@ -21,7 +20,6 @@
           </v-col>
           <v-col cols="12" md="6">
             <v-text-field
-             
               type="email"
               name="email"
               v-model="email"
@@ -34,7 +32,6 @@
           </v-col>
           <v-col cols="12">
             <v-textarea
-             
               type="message"
               name="message"
               v-model="message"
@@ -58,6 +55,7 @@
 <script>
 import { mapState } from "vuex";
 import FlechaAtras from "@/components/FlechaAtras";
+import firebase from "firebase";
 export default {
   components: {
     FlechaAtras,
@@ -73,15 +71,19 @@ export default {
     ...mapState(["colors"]),
   },
   methods: {
-    sendMessage() {
-      const message = {
-        name: this.name,
-        email: this.email,
-        message: this.message,
-        date: new Date().toDateString(),
-      };
+    async sendMessage() {
+      try {
+        const message = {
+          name: this.name,
+          email: this.email,
+          message: this.message,
+          date: new Date().toDateString(),
+        };
 
-      console.log(message);
+        await firebase.firestore().collection("comentarios").add(message);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
