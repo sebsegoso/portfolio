@@ -14,7 +14,7 @@
           <h1 class="home__header__nombre">Sebastián Segura Osorio</h1>
           <h2 class="home__header__profesion">Desarrollador Front-end</h2>
           <h4 class="mb-6"><v-icon>mdi-map-marker</v-icon> Santiago, Chile.</h4>
-          <h3 class="pt-5">Contáctame en:</h3>
+          <h3 class="pt-5">Encuéntrame en:</h3>
           <div
             class="home__header__contactme pb-5 d-flex flex-column flex-md-row justify-md-center align-md-center"
           >
@@ -24,9 +24,9 @@
             <a href="https://www.linkedin.com/in/sebastian-s-o/" target="_blank"
               ><v-icon x-large>mdi-linkedin</v-icon>/sebastian-s-o</a
             >
-            <a href="mailto:sseguraosorio@gmail.com" target="_blank"
+            <!-- <a href="mailto:sseguraosorio@gmail.com" target="_blank"
               ><v-icon x-large>mdi-gmail</v-icon>sseguraosorio</a
-            >
+            > -->
           </div>
           <v-btn
             dark
@@ -176,16 +176,14 @@
       <v-container class="mx-auto">
         <h2 class="text-center pb-6">Algunos de mis proyectos</h2>
         <v-row>
-          <v-col cols="12" md="6" xl="4">
-            <h3>HummingBird</h3>
-          </v-col>
-
-          <v-col cols="12" md="6" xl="4">
-            <h3>Beer-app</h3>
-          </v-col>
-
-          <v-col cols="12" md="6" xl="4">
-            <h3>PokeAPI</h3>
+          <v-col
+            cols="12"
+            md="6"
+            xl="4"
+            v-for="project of projects"
+            :key="project.id"
+          >
+            <DetallesProyecto :proyecto="project" />
           </v-col>
         </v-row>
       </v-container>
@@ -196,12 +194,14 @@
 <script>
 import { mapState } from "vuex";
 import VueAos from "vue-aos";
+import DetallesProyecto from "@/components/PopUps/DetallesProyecto";
 
 export default {
   name: "Home",
-  components: { VueAos },
+  components: { VueAos, DetallesProyecto },
   computed: {
     ...mapState(["colors"]),
+    ...mapState("Proyectos", ["projects"]),
   },
 };
 </script>

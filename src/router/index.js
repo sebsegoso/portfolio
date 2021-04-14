@@ -11,27 +11,41 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
     path: '/contacto',
     name: 'Contacto',
     // route level code-splitting
     // this generates a separate chunk (Contacto.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "Contacto" */ '../views/Contacto.vue')
-  }
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    // route level code-splitting
+    // this generates a separate chunk (Admin.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "Admin" */ '../views/Admin/Admin.vue'),
+    children: [
+      {
+        path: 'add-project',
+        name: 'AddProject',
+        // route level code-splitting
+        // this generates a separate chunk (Admin.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "Admin" */ '../views/Admin/AddProject.vue'),
+      }
+    ]
+  },
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  next()
+  window.scroll({ top: 0, behavior: 'smooth' })
 })
 
 export default router

@@ -13,18 +13,19 @@ export default {
     actions: {
         getProjects({ commit }) {
             try {
-                console.log('before fb');
-                firebase.firestore().collection('proyectos')
+                firebase
+                    .firestore()
+                    .collection('proyectos')
                     .onSnapshot((querySnapshot) => {
                         var projects = [];
                         querySnapshot.forEach((doc) => {
-                            projects.push(doc.data());
+                            let data = doc.data()
+                            data.id = doc.id
+                            projects.push(data);
 
                         });
                         commit('PROJECTS_UPDATED', projects)
                     });
-
-
             }
             catch (error) {
                 alert(error.message)
