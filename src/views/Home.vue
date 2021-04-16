@@ -8,21 +8,21 @@
         <div class="home__header__profile mx-auto pa-10 rounded-xl">
           <img
             class="home__header__img"
-            src="https://lh3.googleusercontent.com/a-/AOh14Gixz-2cTwyRK_iY29Md3FFyG5XgYvxONIU7xWvVsg=s96-c"
-            alt=""
+            src="https://firebasestorage.googleapis.com/v0/b/sebsegoso.appspot.com/o/assets%2Fimg%2Ffoto%20perfil%20sebsegoso.png?alt=media&token=8e3ab636-9a1e-4387-b348-73f16d663e83"
+            alt="Foto perfil"
           />
           <h1 class="home__header__nombre">Sebastián Segura Osorio</h1>
           <h2 class="home__header__profesion">Desarrollador Front-end</h2>
-          <h4 class="mb-6"><v-icon>mdi-map-marker</v-icon> Santiago, Chile.</h4>
-          <h3 class="pt-5">Encuéntrame en:</h3>
+          <h4 class="mb-4"><v-icon>mdi-map-marker</v-icon> Santiago, Chile.</h4>
+          <h3>Encuéntrame en:</h3>
           <div
-            class="home__header__contactme pb-5 d-flex flex-column flex-md-row justify-md-center align-md-center"
+            class="home__header__contactme d-flex flex-column flex-md-row justify-md-center align-md-center"
           >
             <a href="https://github.com/sebsegoso" target="_blank"
               ><v-icon x-large>mdi-github</v-icon>/sebsegoso</a
             >
-            <a href="https://www.linkedin.com/in/sebastian-s-o/" target="_blank"
-              ><v-icon x-large>mdi-linkedin</v-icon>/sebastian-s-o</a
+            <a href="https://www.linkedin.com/in/sebsegoso/" target="_blank"
+              ><v-icon x-large>mdi-linkedin</v-icon>/sebsegoso</a
             >
             <!-- <a href="mailto:sseguraosorio@gmail.com" target="_blank"
               ><v-icon x-large>mdi-gmail</v-icon>sseguraosorio</a
@@ -47,10 +47,10 @@
 
     <!-- Breve descripcion -->
     <section
-      class="home__descripcion py-10 d-flex align-center justify-center"
+      class="home__descripcion py-10 d-flex align-center"
       id="Descripcion"
     >
-      <v-container>
+      <v-container class="mx-auto ">
         <p>
           Soy un apasionado por la cálidad final de mi trabajo , la atención a
           los detalles y pensar en los distintos casos de uso de lo que
@@ -240,7 +240,6 @@ export default {
     background: linear-gradient($main-light, $second-dark);
     &__profile {
       background: linear-gradient($second-light, $main-light);
-      width: fit-content;
     }
     h1 {
       font-size: 24px;
@@ -250,7 +249,7 @@ export default {
     }
     &__img {
       border-radius: 50%;
-      width: 50%;
+      width: 70%;
       max-width: 300px;
       border: 8px solid $main-light;
     }
@@ -273,7 +272,6 @@ export default {
     color: $main-light;
     font-size: 20px;
     .container {
-      padding: 40px 0;
       border-top: 1px solid $main-highlight;
       border-bottom: 1px solid $main-highlight;
     }
@@ -298,6 +296,9 @@ export default {
 @media (min-width: 960px) {
   .home {
     &__header {
+      &__profile{
+        width: fit-content;
+      }
       h1 {
         font-size: 32px;
       }
@@ -305,7 +306,7 @@ export default {
         font-size: 24px;
       }
       &__img {
-        border: 16px solid $main-light;
+        border: 10px solid $main-light;
       }
     }
   }
