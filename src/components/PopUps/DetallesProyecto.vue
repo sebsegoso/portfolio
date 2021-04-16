@@ -19,9 +19,10 @@
               <v-fade-transition>
                 <v-overlay
                   v-if="hover"
-                  :color="colors.mainHighlight"
+                  :color="colors.mainDark"
                   absolute
                   class="text-center"
+                  opacity=".6"
                 >
                   <h3>{{ proyecto.name }}</h3>
                   <h4>{{ proyecto.type }}</h4>
@@ -60,11 +61,11 @@
         </v-container>
 
         <v-container class="dialogProject__details">
-          <h2 class="pb-3">Especificaciones del proyecto</h2>
-          <p v-for="(desc, i) of description" :key="i">{{ desc }}</p>
-          <!-- datos técnicos -->
-          <v-row no-gutters>
-            <v-col cols="12">
+          <v-row>
+            <v-col cols="12" md="6" xl="4">
+              <h2 class="pb-3">Especificaciones del proyecto</h2>
+              <p v-for="(desc, i) of description" :key="i">{{ desc }}</p>
+              <!-- datos técnicos -->
               <h3 class="pb-1">Detalles técnicos</h3>
               <ul class="dialogProject__details__techList pb-5">
                 <li>
@@ -89,71 +90,63 @@
                     </li>
                   </ul>
                 </li>
+                <li v-if="proyecto.tech.extra">
+                  Extra:
+                  <ul>
+                    <li v-for="(ui, i) of proyecto.tech.extra" :key="i">
+                      {{ ui }}
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </v-col>
-            <!-- Caracteristicas -->
-            <!-- <v-col cols="12" md="7" lg="8">
-              <h3 class="pb-1">Características proyecto</h3>
-              <ul class="pb-5">
-                <li>asdas</li>
-              </ul>
-            </v-col> -->
-          </v-row>
-          <v-row class="py-6">
-            <v-col v-if="proyecto.urlDemo">
-              <v-btn
-                width="100%"
-                :color="colors.mainHighlight"
-                :href="proyecto.urlDemo"
-                target="_blank"
-                dark
-                ><v-icon>mdi-application</v-icon> Ver demo
-              </v-btn>
-            </v-col>
+            <v-col cols="12" md="6" xl="8">
+              <v-row class="py-6">
+                <v-col v-if="proyecto.urlRepo">
+                  <v-btn
+                    width="100%"
+                    :color="colors.secondDark"
+                    :href="proyecto.urlRepo"
+                    target="_blank"
+                    dark
+                    ><v-icon>mdi-github</v-icon> Ver repositorio
+                  </v-btn>
+                </v-col>
 
-            <v-col v-if="proyecto.urlRepo">
-              <v-btn
-                width="100%"
-                :color="colors.secondDark"
-                :href="proyecto.urlRepo"
-                target="_blank"
-                dark
-                ><v-icon>mdi-github</v-icon> Ver repositorio
-              </v-btn>
+                <v-col v-if="proyecto.urlDemo">
+                  <v-btn
+                    width="100%"
+                    :color="colors.mainHighlight"
+                    :href="proyecto.urlDemo"
+                    target="_blank"
+                    dark
+                    ><v-icon>mdi-application</v-icon> Visitar demo
+                  </v-btn>
+                </v-col>
+                <v-col cols="12">
+                  <iframe
+                    :src="proyecto.urlDemo"
+                    frameborder="0"
+                    height="600"
+                    width="100%"
+                  ></iframe>
+                </v-col>
+              </v-row>
+              <!-- Carousel img
+              <v-carousel
+                cycle
+                show-arrows-on-hover
+                hide-delimiter-background
+                height="70vh"
+              >
+                <v-carousel-item v-for="(img, i) of proyecto.img" :key="i">
+                  <div class="d-flex align-center justify-center">
+                    <img :src="img" />
+                  </div>
+                </v-carousel-item>
+              </v-carousel> -->
             </v-col>
           </v-row>
-          <!-- Carousel img -->
-          <v-carousel
-            cycle
-            show-arrows-on-hover
-            hide-delimiter-background
-            height="80vh"
-          >
-            <v-carousel-item v-for="(img, i) of proyecto.img" :key="i">
-              <!-- <v-dialog v-model="dialogImg">
-                <template v-slot:activator="{ on, attrs }">
-                  <div v-bind="attrs" v-on="on">
-                    <v-img :src="img" />
-                  </div>
-                </template>
-                <v-sheet class="imgDialog">
-                  <div
-                    class="imgDialog__header d-flex justify-space-between align-center"
-                  >
-                    <h4>{{ proyecto.name }}</h4>
-                    <v-btn
-                      @click="dialogImg = false"
-                      :color="colors.mainHighlight"
-                      dark
-                      small
-                      >X</v-btn
-                    >
-                  </div> -->
-                  <v-img :src="img" />
-                <!-- </v-sheet>
-              </v-dialog> -->
-            </v-carousel-item>
-          </v-carousel>
         </v-container>
       </div>
     </v-sheet>
@@ -162,6 +155,7 @@
 
 <script>
 import { mapState } from "vuex";
+import moment from "moment";
 export default {
   name: "PopupProyecto",
   props: {
@@ -190,10 +184,10 @@ export default {
 
 <style lang="scss" scoped>
 .project_img {
-  filter: grayscale(70%);
-  transition: filter 0.3s ease;
+  // filter: grayscale(50%);
+  transition: all 0.2s ease;
   &:hover {
-    filter: none;
+    filter: drop-shadow(0 0 15px $main-dark);
   }
 }
 

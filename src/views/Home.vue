@@ -51,19 +51,12 @@
       id="Descripcion"
     >
       <v-container>
-        <vue-aos animation-class="fadeIn animated">
-          <p class="text-center">
-            <v-icon class="pb-1">mdi-format-quote-open</v-icon>
-            Soy un apasionado por la cálidad final de mi trabajo , la atención a
-            los detalles y pensar en los distintos casos de uso de lo que
-            construyo es mi vocación Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Dolorum nesciunt consequatur qui possimus autem,
-            enim odit repudiandae necessitatibus facere. Consequatur
-            exercitationem adipisci aspernatur dicta temporibus quibusdam
-            quaerat reprehenderit libero at.
-            <v-icon class="pb-1">mdi-format-quote-close</v-icon>
-          </p>
-        </vue-aos>
+        <p>
+          Soy un apasionado por la cálidad final de mi trabajo , la atención a
+          los detalles y pensar en los distintos casos de uso de lo que
+          construyo es mi vocación. Ir por nuevos desafíos es lo que me mueve a
+          diario, me gusta y me intereso por aprender cosas nuevas.
+        </p>
       </v-container>
     </section>
 
@@ -180,10 +173,18 @@
             cols="12"
             md="6"
             xl="4"
-            v-for="project of projects"
+            v-for="project of proyectos"
             :key="project.id"
           >
             <DetallesProyecto :proyecto="project" />
+          </v-col>
+          <v-col cols="12" class="text-center">
+            <h4>
+              Para más proyectos visita mi
+              <a href="https://github.com/sebsegoso" target="_blank"
+                ><v-icon>mdi-github</v-icon>Github</a
+              >
+            </h4>
           </v-col>
         </v-row>
       </v-container>
@@ -194,6 +195,7 @@
 <script>
 import { mapState } from "vuex";
 import VueAos from "vue-aos";
+import moment from "moment";
 import DetallesProyecto from "@/components/PopUps/DetallesProyecto";
 
 export default {
@@ -202,6 +204,19 @@ export default {
   computed: {
     ...mapState(["colors"]),
     ...mapState("Proyectos", ["projects"]),
+    proyectos() {
+      const ordenarPorFecha = (a, b) => {
+        if (a.endDate > b.endDate) {
+          return 1;
+        }
+        if (a.endDate < b.endDate) {
+          return -1;
+        }
+        return 0;
+      };
+
+      return this.projects.sort(ordenarPorFecha).reverse();
+    },
   },
 };
 </script>
@@ -257,7 +272,7 @@ export default {
     background: $main-dark;
     color: $main-light;
     font-size: 20px;
-    p {
+    .container {
       padding: 40px 0;
       border-top: 1px solid $main-highlight;
       border-bottom: 1px solid $main-highlight;

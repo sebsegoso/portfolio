@@ -240,6 +240,47 @@
               </ul>
             </v-col>
           </v-row>
+          <v-row no-gutters>
+            <v-col cols="12" md="6" class="d-flex align-center">
+              <v-text-field
+                dense
+                outlined
+                :color="mainColor"
+                v-model="extraItem"
+                label="Extra"
+                @keyup.enter="addExtra"
+              ></v-text-field>
+              <v-btn
+                fab
+                x-small
+                dark
+                @click="addExtra"
+                :color="mainColor"
+                class="mb-7 ml-2"
+                >+</v-btn
+              >
+            </v-col>
+            <v-col cols="12" md="6">
+              <ul>
+                <li
+                  v-for="(extra, i) of project.tech.extra"
+                  :key="i"
+                  class="d-flex align-center pb-2"
+                >
+                  {{ extra }}
+                  <v-btn
+                    fab
+                    x-small
+                    dark
+                    color="red"
+                    @click="project.tech.extra.splice(i, 1)"
+                  >
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
+                </li>
+              </ul>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -277,7 +318,8 @@ export default {
         startDate: "",
         tech: {
           database: [],
-          ui: [],
+          ui: ["Sass", "Vuetify"],
+          extra: [],
         },
       },
       fecha: [],
@@ -285,20 +327,20 @@ export default {
       detalle: "",
       databaseItem: "",
       uiItem: "",
+      extraItem: "",
     };
   },
   methods: {
     async addProject() {
       this.ajustarFecha();
       try {
-        await firebase.firestore().collection('proyectos').add(this.project);
-        alert('Proyecto cargado en firebase')
+        await firebase.firestore().collection("proyectos").add(this.project);
+        alert("Proyecto cargado en firebase");
       } catch (error) {
-        alert(error.message)
+        alert(error.message);
       }
-      
+
       console.log(this.project);
-      
     },
     ajustarFecha() {
       let fecha = this.fecha;
@@ -326,6 +368,10 @@ export default {
     addUi() {
       this.project.tech.ui.push(this.uiItem);
       this.uiItem = "";
+    },
+    addExtra() {
+      this.project.tech.extra.push(this.extraItem);
+      this.extraItem = "";
     },
   },
   computed: {
