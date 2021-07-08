@@ -50,7 +50,7 @@
       class="home__descripcion py-10 d-flex align-center"
       id="Descripcion"
     >
-      <v-container class="mx-auto ">
+      <v-container class="mx-auto">
         <p>
           Soy un apasionado por la cálidad final de mi trabajo , la atención a
           los detalles y pensar en los distintos casos de uso de lo que
@@ -153,10 +153,14 @@
             </h3>
             <ul>
               <li><v-icon>mdi-console</v-icon> Uso de consola</li>
+              <li>Algo de experiencia con tests E2E con Cypress</li>
               <li>Responsive web-design utilizando metodología mobile first</li>
               <li>
                 Atención a los detalles para mejorar la experiencia de los
                 usuarios
+              </li>
+              <li>
+                Manejo de software de edición de imagenes como Adobe Photoshop
               </li>
             </ul>
           </v-col>
@@ -296,7 +300,7 @@ export default {
 @media (min-width: 960px) {
   .home {
     &__header {
-      &__profile{
+      &__profile {
         width: fit-content;
       }
       h1 {
