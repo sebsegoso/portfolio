@@ -15,12 +15,14 @@ export default {
   }),
   methods: {
     ...mapActions("Proyectos", ["getProjects"]),
+    ...mapActions("Mailing", ["newMessageNotification"]),
   },
   computed: {
     ...mapState("Proyectos", ["projects"]),
   },
   created() {
     this.getProjects();
+    // this.newMessageNotification('probanding');
   },
 };
 </script>

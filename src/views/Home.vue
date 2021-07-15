@@ -2,7 +2,14 @@
   <div class="home">
     <!-- Header -->
     <header
-      class="home__header py-10 d-flex flex-column justify-space-around align-center"
+      class="
+        home__header
+        py-10
+        d-flex
+        flex-column
+        justify-space-around
+        align-center
+      "
     >
       <v-container class="text-center">
         <div class="home__header__profile mx-auto pa-10 rounded-xl">
@@ -16,7 +23,13 @@
           <h4 class="mb-4"><v-icon>mdi-map-marker</v-icon> Santiago, Chile.</h4>
           <h3>Encuéntrame en:</h3>
           <div
-            class="home__header__contactme d-flex flex-column flex-md-row justify-md-center align-md-center"
+            class="
+              home__header__contactme
+              d-flex
+              flex-column flex-md-row
+              justify-md-center
+              align-md-center
+            "
           >
             <a href="https://github.com/sebsegoso" target="_blank"
               ><v-icon x-large>mdi-github</v-icon>/sebsegoso</a
@@ -52,10 +65,31 @@
     >
       <v-container class="mx-auto">
         <p>
-          Soy un apasionado por la cálidad final de mi trabajo , la atención a
-          los detalles y pensar en los distintos casos de uso de lo que
-          construyo es mi vocación. Ir por nuevos desafíos es lo que me mueve a
-          diario, me gusta y me intereso por aprender cosas nuevas.
+          Hola, mi nombre es Sebastián Segura Osorio, soy Desarrollador
+          Front-end desde el 2020 y VueJs es el framework Javascript con el que
+          mejor me desempeño.
+        </p>
+        <p>
+          Si bien, comencé hace muy poco en el mundo del desarrollo web, ya he
+          tenido 2 experiencias laborales importantes. La primera fue
+          desarrollando el MVP de HummingBird, la cual es una plataforma de
+          vuelos compartidos. Y la segunda es brindando soporte e implementando
+          nuevas cosas en Surreal travel, una plataforma que ofrece experiencias
+          en el sur de Chile. Ambas actividades las he desempeñado de manera
+          Freelance, pero creo y siento que ya es el momento de buscar la
+          oportunidad en empresas del rubro.
+        </p>
+        <p>
+          Quiero desempeñarme como desarrollador Front end para poder
+          desarrollar aplicaciones que solucionen problemas para los usuarios
+          para así impactar de manera positiva en ellos.
+        </p>
+        <p>
+          Si bien la falta de experiencia en empresas es un defecto, Estoy
+          viviendo una etapa en la que siento mucha ambición por lo venidero. Es
+          por esto que me encuentro muy motivado en encontrar la oportunidad que
+          me permita dar el salto que me posicione como un profesional experto
+          en el área, lo cual sé que lograré con mucho trabajo y disciplina.
         </p>
       </v-container>
     </section>
@@ -116,6 +150,8 @@
                 <h4>Servicios para desarrolladores:</h4>
                 <h4><v-icon x-large>mdi-firebase</v-icon>Firebase</h4>
                 <p>Uso de Firestore, Authentication, Storage, Hosting, etc.</p>
+                <h4><v-icon x-large>mdi-email-send</v-icon>EmailJS</h4>
+                <p>Envío de correos electrónicos de manera automatizada.</p>
               </v-col>
 
               <v-col cols="12">
@@ -153,15 +189,13 @@
             </h3>
             <ul>
               <li><v-icon>mdi-console</v-icon> Uso de consola</li>
-              <li>Algo de experiencia con tests E2E con Cypress</li>
+              <li>Experiencia básica en tests E2E con Cypress</li>
               <li>Responsive web-design utilizando metodología mobile first</li>
               <li>
-                Atención a los detalles para mejorar la experiencia de los
+                Atención a los detalles para ofrecer la mejor experiencia a los
                 usuarios
               </li>
-              <li>
-                Manejo de software de edición de imagenes como Adobe Photoshop
-              </li>
+              <li>Manejo de Adobe Photoshop</li>
             </ul>
           </v-col>
         </v-row>
