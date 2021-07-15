@@ -152,6 +152,8 @@
                 <p>Uso de Firestore, Authentication, Storage, Hosting, etc.</p>
                 <h4><v-icon x-large>mdi-email-send</v-icon>EmailJS</h4>
                 <p>Envío de correos electrónicos de manera automatizada.</p>
+                <h4><v-icon x-large>mdi-clock-outline</v-icon>Moment Js</h4>
+                <p>Trabajo con fechas, horas, minutos, etc. de manera mucho más fácil y práctica.</p>
               </v-col>
 
               <v-col cols="12">
